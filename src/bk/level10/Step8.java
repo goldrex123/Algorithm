@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 public class Step8 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
+
         StringTokenizer token = new StringTokenizer(br.readLine());
         int[] numArr = new int[3];
         for(int i = 0; i < 3; i++) {
