@@ -20,7 +20,7 @@ public class Step2 {
 		Map<String,Integer> words = new HashMap<String,Integer>();
 		
 		for(int i = 0; i < N; i ++) {
-			words.put(br.readLine(), 0);
+			words.put(br.readLine(), 0);	
 		}
 		
 		for(int i = 0; i < M; i++) {
