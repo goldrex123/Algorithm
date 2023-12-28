@@ -19,6 +19,8 @@ public class Step7 {
 		Set<Integer> ASet = new HashSet<>();
 		Set<Integer> BSet = new HashSet<>();
 		
+		int cnt = A;
+		
 		String[] aNum = br.readLine().split(" ");
 		for(int i = 0; i < A; i++) {
 			ASet.add(Integer.parseInt(aNum[i]));
@@ -26,9 +28,17 @@ public class Step7 {
 		
 		String[] bNum = br.readLine().split(" ");
 		for(int i = 0; i < B; i++) {
-			BSet.add(Integer.parseInt(bNum[i]));
+			if(ASet.contains(Integer.parseInt(bNum[i]))) {
+				cnt--;
+			} else {
+				cnt++;
+			}
+			
+//			BSet.add(Integer.parseInt(bNum[i]));
 		}
 		
-		System.out.println(ASet.stream().filter(x -> !BSet.contains(x)).count() + BSet.stream().filter(x -> !ASet.contains(x)).count());
+		System.out.println(cnt);
+		
+//		System.out.println(ASet.stream().filter(x -> !BSet.contains(x)).count() + BSet.stream().filter(x -> !ASet.contains(x)).count());
 	}
 }
