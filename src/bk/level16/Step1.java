@@ -22,11 +22,7 @@ public class Step1 {
 				stack.add(Integer.parseInt(inputOrder[1]));
 				break;
 			case "2":
-				try {
-					sb.append(stack.pop()).append("\n");
-				} catch(EmptyStackException e) {
-					sb.append("-1").append("\n");
-				}
+				sb.append(stack.isEmpty() ? "-1" : stack.pop()).append("\n");
 				break;
 			case "3":
 				sb.append(stack.size()).append("\n");
@@ -39,11 +35,7 @@ public class Step1 {
 				}
 				break;
 			case "5":
-				try {
-					sb.append(stack.peek()).append("\n");
-				} catch(EmptyStackException e) {
-					sb.append("-1").append("\n");
-				}
+				sb.append(stack.isEmpty() ? "-1" : stack.peek()).append("\n");
 				break;
 			}
 		 }
