@@ -21,6 +21,7 @@ local.properties
 .classpath
 .project
 /out
+.DS_Store
 
 # External tool builders
 .externalToolBuilders/
