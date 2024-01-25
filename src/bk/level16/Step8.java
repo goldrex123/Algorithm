@@ -20,12 +20,25 @@ public class Step8 {
 
         Deque<Integer> deque = new ArrayDeque<>();
 
-        for(int i = 1; i <= N; i++) {
+        for (int i = 1; i <= N; i++) {
             deque.offer(i);
         }
 
+        int removeNum = K;
+        while (true) {
+            deque.remove(removeNum);
+            sb.append(removeNum).append(", ");
+            if(deque.isEmpty()) break;
+            for (int i = 0; i < K; i++) {
+                removeNum = removeNum+1>N ? 1 : ++removeNum;
+                if (!deque.contains(removeNum)) {
+                    i -= 1;
+                }
+            }
+        }
 
 
-        System.out.println(sb.toString());
+        sb.append(">");
+        System.out.println(sb.replace(sb.length()-3, sb.length()-1, ""));
     }
 }
