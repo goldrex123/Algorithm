@@ -24,17 +24,11 @@ public class Step8 {
             deque.offer(i);
         }
 
-        int removeNum = K;
-        while (true) {
-            deque.remove(removeNum);
-            sb.append(removeNum).append(", ");
-            if(deque.isEmpty()) break;
-            for (int i = 0; i < K; i++) {
-                removeNum = removeNum+1>N ? 1 : ++removeNum;
-                if (!deque.contains(removeNum)) {
-                    i -= 1;
-                }
+        while(!deque.isEmpty()) {
+            for (int i = 0; i < K-1; i++) {
+                deque.offer(deque.poll());
             }
+            sb.append(deque.poll()).append(", ");
         }
 
 
