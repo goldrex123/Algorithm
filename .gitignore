@@ -22,6 +22,7 @@ local.properties
 .project
 /out
 .DS_Store
+.java-version
 
 # External tool builders
 .externalToolBuilders/
