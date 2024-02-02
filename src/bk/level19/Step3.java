@@ -21,7 +21,5 @@ public class Step3 {
         } else {
           return num * factorial(num-1);
         }
-
-
     }
 }
