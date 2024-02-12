@@ -30,11 +30,22 @@ public class Step4 {
             }
         }
 
+        //정렬
         Collections.sort(numbers);
+
+        //최빈값 구하기
+        int maxNumber = Collections.max(map.values());
+        ArrayList<Integer> list = new ArrayList<>();
+        map.forEach((k,v) -> {
+            if(map.get(k) == maxNumber) {
+                list.add(k);
+            }
+        });
+        Collections.sort(list);
 
         sb.append(Math.round((double)numbers.stream().mapToInt(Integer::intValue).sum() / N)).append("\n");
         sb.append(numbers.get(N / 2)).append("\n");
-        sb.append("").append("\n");
+        sb.append(list.size() == 1 ? list.get(0) : list.get(1)).append("\n");
         sb.append(Math.abs(numbers.get(N-1) -numbers.get(0)));
 
         System.out.println(sb);
