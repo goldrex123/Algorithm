@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 // 문제번호 24060 : 알고리즘 수업 - 병합 정렬 1
 public class Step4 {
     public static int[] arr;
+    public static int K;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -15,15 +16,20 @@ public class Step4 {
 
         token = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(token.nextToken());
-        int K = Integer.parseInt(token.nextToken());
+        int[] sorted = new int[N];
+        K = Integer.parseInt(token.nextToken());
 
         arr = new int[N];
         token = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(token.nextToken());
+            sorted[i] = Integer.parseInt(token.nextToken());
         }
 
-        merge_sort(arr, 0, N - 1);
+        merge_sort(sorted, 0, N - 1);
+
+        if(K > 0) {
+            System.out.println(-1);
+        }
     }
 
     public static void merge_sort(int[] arr, int left, int right) {
@@ -37,7 +43,55 @@ public class Step4 {
         merge(arr, left, mid, right);
     }
 
-    public static void merge(int[] a, int left, int mid, int right)
+    public static void merge(int[] a, int left, int mid, int right) {
+        int i = left; // 0
+        int j = mid+1; // 2
+        int k = i; // 0
+
+        while(i <= mid  && j <= right) {
+            if(a[i] <= a[j]) {
+                arr[k] = a[i];
+                K--;
+                checkK(a[i]);
+                k++;
+                i++;
+            } else {
+                arr[k] = a[j];
+                K--;
+                checkK(a[j]);
+                k++;
+                j++;
+            }
+        }
+
+        if(i > mid) {
+            for(int m = j; m <= right; m++) {
+                arr[k] = a[m];
+                K--;
+                checkK(a[m]);
+                k++;
+            }
+        }
+
+        if(j > right) {
+            for (int l = i; l <= mid; l++) {
+                arr[k] = a[l];
+                K--;
+                checkK(a[l]);
+                k++;
+            }
+        }
+
+        for (int l = left; l <= right; l++) {
+            a[l] = arr[l];
+        }
+    }
+
+    public static void checkK(int num) {
+        if(K == 0) {
+            System.out.println(num);
+            System.exit(0);
+        }
     }
 
 }
