@@ -26,6 +26,7 @@ public class Step5 {
             count++;
             return;
         }
+
         // depth : 행 , i : 열
         for (int i = 0; i < N; i++) {
             queenPos[depth] = i;
