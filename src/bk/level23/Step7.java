@@ -10,14 +10,16 @@ public class Step7 {
 
     static int[][] triangleValue;
 
-    static Integer[] dpArr;
+    static Integer[][] dpArr;
+
+    static int N;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = Integer.parseInt(br.readLine());
+        N = Integer.parseInt(br.readLine());
         triangleValue = new int[N][N];
-        dpArr = new Integer[N];
+        dpArr = new Integer[N][N];
 
         StringTokenizer token;
 
@@ -28,17 +30,23 @@ public class Step7 {
             }
         }
 
-        dpArr[0] = triangleValue[0][0];
-
-        dp(N - 1);
-    }
-
-    static int dp(int depth) {
-
-        if(dpArr[depth] == null) {
-            
+        for (int i = 0; i < N; i++) {
+            dpArr[N-1][i] = triangleValue[N-1][i];
         }
 
-        return dpArr[depth];
+        System.out.println(dp(0, 0));
+    }
+
+    static int dp(int depth, int idx) {
+
+        if(depth == N-1) {
+            return dpArr[depth][idx];
+        }
+
+        if(dpArr[depth][idx] == null) {
+            dpArr[depth][idx] = Math.max(dp(depth + 1, idx), dp(depth + 1, idx + 1)) + triangleValue[depth][idx];
+        }
+
+        return dpArr[depth][idx];
     }
 }
